@@ -2,5 +2,5 @@
 Video Gameplay
 
 <p align="center">
-<img src="gif/demo.gif"/>
+<img src="demo.gif"/>
 </p>
