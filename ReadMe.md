@@ -4,6 +4,6 @@ Video Gameplay
 
 <p align="center">
 <img src="img_gamejam_1.png"/>
-<img src="demo.gif"/>
+<img src="demo_gamejam.gif"/>
 <img src="img_gamejam_2.png"/>
 </p>
