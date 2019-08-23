@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44255087, g: 0.49164194, b: 0.5714727, a: 1}
+  m_IndirectSpecularColor: {r: 0.44255087, g: 0.49164218, b: 0.57147276, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -94,8 +94,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaDirect: 0.5
     m_PVRFilteringAtrousPositionSigmaIndirect: 2
     m_PVRFilteringAtrousPositionSigmaAO: 1
-    m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
+    m_TrainingDataDestination: TrainingData
   m_LightingDataAsset: {fileID: 0}
   m_UseShadowmask: 1
 --- !u!196 &4
@@ -1191,11 +1191,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3108021968074401994, guid: 1e4756fcea5b04f4f93bceb97f95f2f8,
-        type: 3}
-      propertyPath: m_Name
-      value: Path_Road_3
-      objectReference: {fileID: 0}
     - target: {fileID: 2907745615647460238, guid: 1e4756fcea5b04f4f93bceb97f95f2f8,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1250,6 +1245,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3108021968074401994, guid: 1e4756fcea5b04f4f93bceb97f95f2f8,
+        type: 3}
+      propertyPath: m_Name
+      value: Path_Road_3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1e4756fcea5b04f4f93bceb97f95f2f8, type: 3}
@@ -1341,11 +1341,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4450492113252132678, guid: 4591da69e81634431b109ea8f27cd522,
-        type: 3}
-      propertyPath: m_Name
-      value: Path_Road_1
-      objectReference: {fileID: 0}
     - target: {fileID: 4450492113252132677, guid: 4591da69e81634431b109ea8f27cd522,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1400,6 +1395,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4450492113252132678, guid: 4591da69e81634431b109ea8f27cd522,
+        type: 3}
+      propertyPath: m_Name
+      value: Path_Road_1
       objectReference: {fileID: 0}
     - target: {fileID: 646715567271829157, guid: 4591da69e81634431b109ea8f27cd522,
         type: 3}
@@ -1941,11 +1941,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 4128133582628694146, guid: 84634a9caac9b487fae2330e6f222574,
-        type: 3}
-      propertyPath: m_Name
-      value: Path_Road_2
-      objectReference: {fileID: 0}
     - target: {fileID: 1350100217134825057, guid: 84634a9caac9b487fae2330e6f222574,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -2000,6 +1995,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4128133582628694146, guid: 84634a9caac9b487fae2330e6f222574,
+        type: 3}
+      propertyPath: m_Name
+      value: Path_Road_2
       objectReference: {fileID: 0}
     - target: {fileID: 7147243711224888620, guid: 84634a9caac9b487fae2330e6f222574,
         type: 3}

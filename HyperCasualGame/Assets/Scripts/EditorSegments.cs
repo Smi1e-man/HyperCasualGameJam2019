@@ -5,13 +5,6 @@ using UnityEngine;
 [ExecuteInEditMode]
 public class EditorSegments : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
     [ExecuteInEditMode]
     void Update()
     {

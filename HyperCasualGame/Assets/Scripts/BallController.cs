@@ -5,6 +5,15 @@ using UnityEngine;
 
 public class BallController : MonoBehaviour
 {
+    //private visual values
+    [SerializeField] private Animator animator;
+    [SerializeField] private Material yellowMat;
+    [SerializeField] private Material blackMat;
+    [SerializeField] public ColorType colorType = ColorType.Yellow;
+
+    [SerializeField] private SwitchNode currentGoal;
+
+    //public values
     public enum VectorType
     {
         Left,
@@ -23,56 +32,25 @@ public class BallController : MonoBehaviour
 
     public Action FallDown;
     public Action GameOverEvent;
-
-    private const float SPEED = 5f;
-    
-    [SerializeField] private Animator animator;
-    [SerializeField] private Material yellowMat;
-    [SerializeField] private Material blackMat;
-    [SerializeField] public ColorType colorType = ColorType.Yellow;
-
-    [SerializeField] private SwitchNode currentGoal;
-
     public BallLineController ballLineController;
+    public SwitchNode Goal { get { return currentGoal; } }
+    public bool Wait { get { return !move; } }
 
+    //private values
+    private const float SPEED = 5f;
     private bool move;
     private Transform targetBall;
     private Vector3 currentMoveVector;
     private VectorType currentVectorType;
 
-    public SwitchNode Goal { get { return currentGoal; } }
-
-    public bool Wait { get { return !move; } }
-
-    // Start is called before the first frame update
-    void Start()
+    /// <summary>
+    /// Private Methods.
+    /// </summary>
+    private void Start()
     {
         StartMove();
         currentMoveVector = new Vector3(0, 0, 1);
         currentVectorType = VectorType.Forward;
-    }
-
-    public void PaintBall()
-    {
-        GetComponent<Renderer>().material = colorType == ColorType.Black ? blackMat : yellowMat;
-    }
-
-    public void StartMove()
-    {
-        move = true;
-    }
-
-    // Update is called once per frame
-    public void UpdateBall( BallController previousBall = null)
-    {
-        if (!isActiveAndEnabled) return;
-
-        UpdatePosition(previousBall);
-
-        if (CheckTakeGoal())
-        {
-            Switch(currentGoal);
-        }
     }
 
     private bool CheckTakeGoal()
@@ -95,42 +73,10 @@ public class BallController : MonoBehaviour
         return false;
     }
 
-    public void StopMove()
-    {
-        move = false;
-    }
-
-    public void Switch(SwitchNode switcher)
-    {
-        //RotateVector
-        transform.position = switcher.GoalPos;
-        switch (switcher.VectorType)
-        {
-            case VectorType.Finish: Finish(); break;
-            case VectorType.SwitchScreen: switcher.SwitchCam(); UpdateGoal(switcher);
-                currentVectorType = VectorType.Forward;
-                break;
-            case VectorType.Backward:
-            case VectorType.Forward:
-            case VectorType.Left:
-            case VectorType.Right:
-                currentVectorType = switcher.VectorType;
-                UpdateGoal(switcher);
-                break;
-        }
-    }
-
     private void UpdateGoal(SwitchNode rotate)
     {
         currentMoveVector = (rotate.NextGoal.GoalPos - rotate.GoalPos).normalized;
         currentGoal = rotate.NextGoal;
-    }
-
-    public void FallDownEvent()
-    {
-        gameObject.SetActive(false);
-        if (FallDown != null)
-            FallDown();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -159,11 +105,11 @@ public class BallController : MonoBehaviour
         }
     }
 
-    private void UpdatePosition( BallController previousBall = null)
+    private void UpdatePosition(BallController previousBall = null)
     {
         if (move)
         {
-            if (previousBall != null )
+            if (previousBall != null)
             {
                 if (previousBall.Goal == currentGoal)
                 {
@@ -197,5 +143,62 @@ public class BallController : MonoBehaviour
                 transform.position += currentMoveVector * SPEED * Time.deltaTime;
             }
         }
+    }
+
+    /// <summary>
+    /// Public Methods.
+    /// </summary>
+    public void PaintBall()
+    {
+        GetComponent<Renderer>().material = colorType == ColorType.Black ? blackMat : yellowMat;
+    }
+
+    public void StartMove()
+    {
+        move = true;
+    }
+
+    public void UpdateBall( BallController previousBall = null)
+    {
+        if (!isActiveAndEnabled) return;
+
+        UpdatePosition(previousBall);
+
+        if (CheckTakeGoal())
+        {
+            Switch(currentGoal);
+        }
+    }
+
+    public void StopMove()
+    {
+        move = false;
+    }
+
+    public void Switch(SwitchNode switcher)
+    {
+        //RotateVector
+        transform.position = switcher.GoalPos;
+        switch (switcher.VectorType)
+        {
+            case VectorType.Finish: Finish(); break;
+            case VectorType.SwitchScreen: switcher.SwitchCam(); UpdateGoal(switcher);
+                currentVectorType = VectorType.Forward;
+                break;
+            case VectorType.Backward:
+            case VectorType.Forward:
+            case VectorType.Left:
+            case VectorType.Right:
+                currentVectorType = switcher.VectorType;
+                UpdateGoal(switcher);
+                break;
+        }
+    }
+
+    public void FallDownEvent()
+    {
+        gameObject.SetActive(false);
+        if (FallDown != null)
+            FallDown();
     }
 }
